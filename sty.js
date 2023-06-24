@@ -25,6 +25,27 @@ const styles=StyleSheet.create({
     margin:10, 
     padding:10
   },
+  title:{
+    fontWeight:"bold",
+    color:'black'
+  },
+  splashView:{
+    alignItems:'center',
+    justifyContent:'center',
+    width:'100%', 
+    height:300
+  },
+  lottieSty:{
+    height:'100%', 
+    width:'100%',
+  },
+  ProfileView:{
+    borderWidth:1, 
+    borderColor:'gray', 
+    borderRadius:10, 
+    margin:10, 
+    padding:10
+  }
   
 });
 
