@@ -5,33 +5,37 @@ import {
   TouchableOpacity,useColorScheme,View,Image, ImageBackground,
 } from 'react-native';
 import PhysiologicalData from './PhysiologicalData';
-
+import Drugs from './Drugs';
+import SelfManagement from './SelfManagement';
+import Social from './Social';
+import styles from './Sty';
+import Physical from './Physical'
+import Cognition from './Cognition';
 const Home = ({navigation})=>{
   return(
-    <SafeAreaView style={style.container}>
-      <TouchableOpacity onPress={()=>{navigation.navigate("Food")}} style={style.item}>
-        <Text style={style.Touchable}>بخش داروها</Text>
+    <SafeAreaView >
+      <TouchableOpacity onPress={()=>{navigation.navigate("Drugs")}} style={styles.homeItem}>
+        <Text style={styles.homeTouchable}>بخش داروها</Text>
       </TouchableOpacity>
-    
-
-      <TouchableOpacity onPress={()=>{navigation.navigate("PhysiologicalData")}} style={style.item}>
-        <Text style={style.Touchable}>ویژگی های فیزیولوژیکی</Text>
-      </TouchableOpacity>
-
-      <TouchableOpacity onPress={()=>{}} style={style.item}>
-        <Text style={style.Touchable}>فعالیت های شناختی</Text>
+  
+      <TouchableOpacity onPress={()=>{navigation.navigate("PhysiologicalData")}} style={styles.homeItem}>
+        <Text style={styles.homeTouchable}>ویژگی های فیزیولوژیکی</Text>
       </TouchableOpacity>
 
-      <TouchableOpacity onPress={()=>{}} style={style.item}>
-        <Text style={style.Touchable}>فعالیت های فیزیکی</Text>
+      <TouchableOpacity onPress={()=>{navigation.navigate("Cognition")}} style={styles.homeItem}>
+        <Text style={styles.homeTouchable}>فعالیت های شناختی</Text>
       </TouchableOpacity>
 
-      <TouchableOpacity onPress={()=>{}} style={style.item}>
-        <Text style={style.Touchable}>فعالیت های اجتماعی</Text>
+      <TouchableOpacity onPress={()=>{navigation.navigate("Physical")}} style={styles.homeItem}>
+        <Text style={styles.homeTouchable}>فعالیت های فیزیکی</Text>
       </TouchableOpacity>
 
-      <TouchableOpacity onPress={()=>{}} style={style.item}>
-        <Text style={style.Touchable}>فعالیت های خودمدیریتی</Text>
+      <TouchableOpacity onPress={()=>{navigation.navigate("Social")}} style={styles.homeItem}>
+        <Text style={styles.homeTouchable}>فعالیت های اجتماعی</Text>
+      </TouchableOpacity>
+
+      <TouchableOpacity onPress={()=>{navigation.navigate("SelfManagement")}} style={styles.homeItem}>
+        <Text style={styles.homeTouchable}>فعالیت های خودمدیریتی</Text>
       </TouchableOpacity>
     </SafeAreaView>
     
@@ -41,30 +45,4 @@ const Home = ({navigation})=>{
 
 
 export default Home;
-
-
-
-export const style=StyleSheet.create({
-  container:{
-    flexDirection:'row',
-    flexWrap:'wrap',
-  },
-  item:{
-    height:200,
-    width:'45%',
-    padding:10,
-    justifyContent:'center', 
-    backgroundColor:'#6495ed',
-    borderRadius:10,
-    margin:10,
-    
-  },
-  Touchable:{
-    textAlign:'center',
-    fontSize:20,
-    fontWeight:'bold',
-    color:'black',
-  },
-  
-});
 

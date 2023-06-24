@@ -16,7 +16,13 @@ import Login from './Login';
 import Home from './Home';
 import Profile from './Profile';
 import Splash from './splash';
+import Drugs from './Drugs';
 import PhysiologicalData from './PhysiologicalData';
+import SelfManagement from './SelfManagement';
+import Social from './Social';
+import Physical from './Physical';
+import Cognition from './Cognition';
+
 const Navigation = ()=>{
   const Stack = createStackNavigator();
 
@@ -28,6 +34,12 @@ const Navigation = ()=>{
         <Stack.Screen name='Login' component={Login} options={{headerShown:false}}/>
         <Stack.Screen name='HomeScreen' component={HomeScreen}  options={{headerShown:false}}/>
         <Stack.Screen name='PhysiologicalData' component={PhysiologicalData} options={{title:"ویژگی های فیزیولوژیکی"}}/>
+        <Stack.Screen name='Drugs' component={Drugs} options={{title:"داروها"}}/>
+        <Stack.Screen name='SelfManagement' component={SelfManagement} options={{title:"فعالیت های خودمدیریتی"}}/>
+        <Stack.Screen name='Social' component={Social} options={{title:"فعالیت های اجتماعی"}}/>
+        <Stack.Screen name='Physical' component={Physical} options={{title:"فعالیت های فیزیکی"}}/>
+        <Stack.Screen name='Cognition' component={Cognition} options={{title:"فعالیت های شناختی"}}/>
+        
         
         </Stack.Navigator>
     </NavigationContainer>

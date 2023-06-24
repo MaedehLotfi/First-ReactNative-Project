@@ -45,8 +45,30 @@ const styles=StyleSheet.create({
     borderRadius:10, 
     margin:10, 
     padding:10
-  }
-  
+  },
+  checkboxContainer: {
+    flexDirection: 'row',
+    marginBottom: 20,
+  },
+  checkboxLabel: {
+    margin: 8,
+  },
+  homeItem:{
+    height:50,
+    width:'95%',
+    padding:10,
+    justifyContent:'center', 
+    backgroundColor:'#6495ed',
+    borderRadius:10,
+    margin:10,
+    
+  },
+  homeTouchable:{
+    textAlign:'center',
+    fontSize:20,
+    fontWeight:'bold',
+    color:'black',
+  },
 });
 
 
