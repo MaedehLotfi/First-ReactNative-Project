@@ -33,17 +33,20 @@ const Drugs = ({navigation})=>{
 
     return(
         <SafeAreaView>
-        <View style={styles.submitViewContainer}>   
+                 <Text  style={styles.textInfo}>دارو های تجویز شده توسط دکتر برای شما</Text>
+
             <FlatList
             data={drugData}
             keyExtractor={item=> item.id} 
             renderItem={({item})=>
                 
-                <View>
-                <Text>{item.drugName}</Text>
-                <Text>{item.drugDosage}</Text>
-                <Text>{item.diseaseName}</Text>
-                <Text>{item.usingDescription}</Text>
+                <View style={{backgroundColor:'#7e98cc', alignItems:'center', padding:10,borderRadius:20, margin:20}}>
+                <Text style={styles.textLevel}>نام دارو: {item.drugName}</Text>
+
+                
+                <Text  style={styles.textLevel}>دوز دارو: {item.drugDosage}</Text>
+                <Text style={styles.textLevel}>نام بیماری: {item.diseaseName}</Text>
+                <Text style={styles.textLevel}>نحوه مصرف: {item.usingDescription}</Text>
 
                 </View>
                 
@@ -52,7 +55,7 @@ const Drugs = ({navigation})=>{
             
             
             
-      </View>
+
       
       
 

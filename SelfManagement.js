@@ -35,30 +35,34 @@ const SelfManagement = ({navigation})=>{
     return(
         <SafeAreaView>
  
-        <Text>در اینجا دکتر معالج با توجه به اطلاعات ارسال شده توسط شما یک سطح به شما اختصاص میدهد</Text>
+        <Text  style={styles.textInfo}>دکتر معالج با توجه به اطلاعات ارسال شده توسط شما در گزارش روزانه یک سطح به شما اختصاص می دهد.</Text>
         {selfManagementData.map((item)=>{
                 return(
                   
-                  <View style={{direction:'rtl',}}>
+                  <View style={{ marginTop:10}}>
                     
-                    <Text>سطح یک :
-                      <CheckBox disabled={false} tintColors={{ true: 'blue', false: 'black' }} value={item.Level1}/>
-                    </Text>
+                  <View style={styles.levelView}>
+                    <CheckBox disabled={false} tintColors={{ true: 'red', false: 'red' }} value={item.Level1}/>
+                    <Text style={styles.textLevel}>سطح یک</Text>
+                  </View>
 
-                    <Text>سطح دو :
-                      <CheckBox disabled={false} tintColors={{ true: 'blue', false: 'black' }} value={item.Level2}/>
-                    </Text>
+                  <View style={styles.levelView}>
+                    <CheckBox disabled={false} tintColors={{ true: 'orange', false: 'orange' }} value={item.Level2}/>
+                    <Text  style={styles.textLevel}>سطح دو</Text>
+                  </View>
 
-                    <Text>سطح سه :
-                      <CheckBox disabled={false} tintColors={{ true: 'blue', false: 'black' }} value={item.Level3}/>
-                    </Text>
+                  <View style={styles.levelView}>
+                    <CheckBox disabled={false} tintColors={{ true: 'yellow', false: 'yellow' }} value={item.Level3}/>
+                    <Text  style={styles.textLevel}>سطح سه</Text>
+                  </View>
 
-                    <Text>سطح چهار :
-                      <CheckBox disabled={false} tintColors={{ true: 'blue', false: 'black' }} value={item.Level4}/>
-                    </Text>
-
+                  <View style={styles.levelView}>
+                    <CheckBox disabled={false} tintColors={{ true: 'green', false: 'green' }} value={item.Level4}/>
+                    <Text style={styles.textLevel}>سطح چهار</Text>
+                  </View>
                     
-                    <Text>توضیحات: {item.SelfManagementDescription}</Text>
+                    
+                    <Text  style={styles.textLevel}>توضیحات دکتر معالج: {item.SelfManagementDescription}</Text>
                   </View>
                 )
                })}

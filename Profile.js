@@ -117,11 +117,11 @@ const LoadMedicationRecordFromServer= async()=>{
       keyExtractor={(item)=>item.id}
       renderItem={({item})=>(
         <>
-        <Text>شماره پرونده: {item.id}</Text>
-        <Text>نام و نام خانوادگی: {item.FullName}</Text>
-        <Text>شماره ملی: {item.NationalCode}</Text>
-        <Text>جنسیت: {item.gender}</Text>
-        <Text>سن: {item.age}</Text>
+        <Text style={styles.textLevel}>شماره پرونده: {item.id}</Text>
+        <Text style={styles.textLevel}>نام و نام خانوادگی: {item.FullName}</Text>
+        <Text style={styles.textLevel}>شماره ملی: {item.NationalCode}</Text>
+        <Text style={styles.textLevel}>جنسیت: {item.gender}</Text>
+        <Text  style={styles.textLevel}>سن: {item.age}</Text>
         </>
       )}/>
 
@@ -135,15 +135,11 @@ const LoadMedicationRecordFromServer= async()=>{
       keyExtractor={(item)=>item.id}
       renderItem={({item})=>(
         <>
-        <Text>نام بیماری : {item.DiseaseTitle}</Text>
-        <Text>توضیحات بیماری : {item.DiseaseDescription}</Text>
+        <Text  style={styles.textLevel}>نام بیماری : {item.DiseaseTitle}</Text>
+        <Text  style={styles.textLevel}>توضیحات بیماری : {item.DiseaseDescription}</Text>
         </>
       )}/>
-      {/* <View style={styles.editView}>
-      <TouchableOpacity  onPress={()=>{navigation.navigate("DiseaseRecords")}}>
-        <Text style={styles.editText}>ویرایش</Text>
-      </TouchableOpacity>
-      </View> */}
+      
       </View>
 
       
@@ -155,18 +151,13 @@ const LoadMedicationRecordFromServer= async()=>{
       keyExtractor={(item)=>item.id}
       renderItem={({item})=>(
         <>
-        <Text>نام دارو : {item.MedicationTitle}</Text>
-        <Text>توضیحات مصرف دارو : {item.MedicationDescription}</Text>
+        <Text  style={styles.textLevel}>نام دارو : {item.MedicationTitle}</Text>
+        <Text  style={styles.textLevel}>توضیحات مصرف دارو : {item.MedicationDescription}</Text>
         </>
       )}/>
 
       
 
-      {/* <View style={styles.editView}>
-      <TouchableOpacity  onPress={()=>{navigation.navigate("MedicationRecords")}}>
-        <Text style={styles.editText}>ویرایش</Text>
-      </TouchableOpacity>
-      </View> */}
 </View>
 
 <View style={styles.ProfileView}>
@@ -176,41 +167,35 @@ const LoadMedicationRecordFromServer= async()=>{
       keyExtractor={(item)=>item.id}
       renderItem={({item})=>(
         <>
-        {/* <Text> محدودیت حرکتی : {item.movementRestriction}</Text>
-        <Text> محدودیت فیزیکی : {item.physicalRestriction}</Text>
-        <Text> محدودیت غذایی : {item.foodRestriction}</Text>
-        <Text> سایر محدودیتها : {item.otherRestriction}</Text> */}
+        <View style={{flexDirection:'row'}}>
+          <View style={styles.levelView}>
+                    <CheckBox disabled={false} tintColors={{ true: 'black', false: 'black' }} value={item.movementRestriction}/>
+                    <Text style={styles.textLevel} >حرکتی</Text>
+                  </View>
 
-        {/* <Text> محدودیت غذایی : <CheckBox
-                disabled={false}
-                value={item.foodRestriction}/></Text> */}
+                  <View style={styles.levelView}>
+                    <CheckBox disabled={false} tintColors={{ true: 'black', false: 'black' }} value={item.physicalRestriction}/>
+                    <Text  style={styles.textLevel} >جسمی</Text>
+                  </View>
 
-{/* 
-                <CheckBox
-                disabled={false}
-                tintColors={{ true: 'blue', false: 'black' }}
-                value={item.movementRestriction}
-                />
-                <CheckBox
-                disabled={false}
-                tintColors={{ true: 'blue', false: 'black' }}
-                value={item.physicalRestriction}
-                />
-                <CheckBox
-                disabled={false}
-                tintColors={{ true: 'blue', false: 'black' }}
-                value={item.foodRestriction}
-                />
-                <CheckBox
-                disabled={false}
-                tintColors={{ true: 'blue', false: 'black' }}
-                value={item.otherRestriction}
-                /> */}
-               
+                  <View style={styles.levelView}>
+                    <CheckBox disabled={false} tintColors={{ true: 'black', false: 'black' }} value={item.foodRestriction}/>
+                    <Text style={styles.textLevel} >غذایی</Text>
+                  </View>
 
-        <Text> محدودیت : {item.limitationDescription}</Text>
+                  <View style={styles.levelView}>
+                    <CheckBox disabled={false} tintColors={{ true: 'black', false: 'black' }} value={item.otherRestriction}/>
+                    <Text  style={styles.textLevel}>سایر محدودیتها</Text>
+                  </View>
+
+                  </View>
+        <Text  style={styles.textLevel}> توضیح محدودیت : {item.limitationDescription}</Text>
+        
         </>
       )}/>
+
+
+
 
 
 

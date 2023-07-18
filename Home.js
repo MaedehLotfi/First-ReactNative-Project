@@ -15,6 +15,7 @@ import DailyReport from './DailyReport';
 const Home = ({navigation})=>{
   return(
     <SafeAreaView >
+      {/* <Text>{new Date().toLocaleString()}</Text> */}
       <TouchableOpacity onPress={()=>{navigation.navigate("DailyReport")}} style={styles.homeItemDaily}>
         <Text style={styles.homeTouchable}>گزارش روزانه</Text>
       </TouchableOpacity>

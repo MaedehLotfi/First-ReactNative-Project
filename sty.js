@@ -1,6 +1,7 @@
 import {
   StyleSheet
 } from 'react-native';
+import Fonts from './Font';
 
 const styles=StyleSheet.create({
   main:{ 
@@ -8,7 +9,7 @@ const styles=StyleSheet.create({
     justifyContent:'center'
   },
   textInput:{
-    borderColor:"grey", 
+    borderColor:"#6495ed", 
     borderWidth:1, 
     borderRadius:10, 
     margin:10, 
@@ -18,17 +19,20 @@ const styles=StyleSheet.create({
   },
   buttonText:{
     color:"white", 
-    textAlign:'center'
+    textAlign:'center',
+    fontFamily:Fonts.IRANSansMobile,
   },
   button:{
-    backgroundColor:"blue", 
+    backgroundColor:"#465899", 
     borderRadius:10, 
     margin:10, 
     padding:10
   },
   title:{
     fontWeight:"bold",
-    color:'black'
+    color:'black',
+    fontSize:18,
+    fontFamily:Fonts.IRANSansMobile,
   },
   splashView:{
     alignItems:'center',
@@ -101,8 +105,34 @@ const styles=StyleSheet.create({
     borderWidth:2,
     padding:20,
     margin:10
+  },
+  levelView:{
+    flexDirection: 'row'
+  },
+  textLevel:{
+    fontSize:18,
+    color:'black',
+  },
+  textInfo:{
+    fontSize:18,
+    fontWeight:'bold',
+    color:'black',
+    fontFamily:Fonts.IRANSansMobile,
+  },
+  tripleView:{
+    flexDirection: 'row',
+    alignContent:'center',
+    flexWrap:'wrap',
+  },
+  eachViewCheck:{
+    borderRadius:10,
+    borderWidth:3,
+    borderColor:'#6495ed',
+    margin:5 ,
+    width:'30%', 
+    height:60, 
+    alignItems:'center',
   }
-
 });
 
 

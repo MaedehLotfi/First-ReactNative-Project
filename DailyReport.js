@@ -61,62 +61,72 @@ import CheckBox from '@react-native-community/checkbox';
 
   const SendToServer=()=>{
     SendPhysiologicalDataToServer();
-    Alert.alert('اطلاعات ارسال شد!',"ارسال شد");
+    Alert.alert('اطلاعات ارسال شد!', "اطلاعات امروز ارسال شد");
   }
-
+  var date= new Date().toLocaleString()
    
       return(
 
         <SafeAreaView>
 <ScrollView>
-          <View style={{flexDirection: 'row',alignContent:'center',flexWrap:'wrap',}}>
-        <View style={{borderRadius:10, borderWidth:3,borderColor:'pink', margin:5 ,width:'30%', height:60, alignItems:'center',}}>
+  
+  <Text  style={styles.textInfo}>در صورت انجام هریک از فعالیت ها در روز قبلی، باکس زیر را تیک بزنید.</Text>
+  <Text >{new Date().toLocaleString()}</Text>
+
+          <View  style={styles.tripleView}>
+        <View style={styles.eachViewCheck}>
             <CheckBox
               disabled={false}
               value={morningDrug}
+              tintColors={{ true: '#6495ed', false: '#6495ed' }}
               onValueChange={(newValue) => setMorningDrug(newValue)}
             /> 
             <Text>دارو صبح</Text>
         </View>
-        <View style={{borderRadius:10, borderWidth:3,borderColor:'pink', margin:5 ,width:'30%', height:60,alignItems:'center'}}>
+        <View style={styles.eachViewCheck}>
             <CheckBox
               disabled={false}
               value={eveningDrug}
+              tintColors={{ true: '#6495ed', false: '#6495ed' }}
               onValueChange={(newValue) => setEveningDrug(newValue)}
             /> 
             <Text>دارو عصر</Text>
           </View>
 
-          <View style={{borderRadius:10, borderWidth:3,borderColor:'pink', margin:5 ,width:'30%', height:60,alignItems:'center'}}>
+          <View style={styles.eachViewCheck}>
             <CheckBox
               disabled={false}
               value={nightDrug}
+              tintColors={{ true: '#6495ed', false: '#6495ed' }}
               onValueChange={(newValue) => setNightDrug(newValue)}
             /> 
             <Text>دارو شب</Text>
             </View>
 
-            <View style={{borderRadius:10, borderWidth:3,borderColor:'green', margin:5 ,width:'30%', height:60,alignItems:'center'}}>
+            <View style={styles.eachViewCheck}>
             <CheckBox
               disabled={false}
               value={Cognition}
+              tintColors={{ true: '#6495ed', false: '#6495ed' }}
               onValueChange={(newValue) => setCognition(newValue)}
             /> 
             <Text>فعالیت شناختی</Text>
             </View>
 
-            <View style={{borderRadius:10, borderWidth:3,borderColor:'green', margin:5 ,width:'30%', height:60,alignItems:'center'}}>
+            <View style={styles.eachViewCheck}>
             <CheckBox
               disabled={false}
+              tintColors={{ true: '#6495ed', false: '#6495ed' }}
               value={physical}
               onValueChange={(newValue) => setPhysical(newValue)}
             /> 
             <Text>فعالیت فیزیکی</Text>
             </View>
 
-            <View style={{borderRadius:10, borderWidth:3,borderColor:'green', margin:5 ,width:'30%', height:60,alignItems:'center'}}>
+            <View style={styles.eachViewCheck}>
             <CheckBox
               disabled={false}
+              tintColors={{ true: '#6495ed', false: '#6495ed' }}
               value={social}
               onValueChange={(newValue) => setSocial(newValue)}
             /> 
@@ -125,7 +135,7 @@ import CheckBox from '@react-native-community/checkbox';
 
   
   </View>
-        <Text style={styles.title}>ویژگی های فیزیولوژیکی روزانه</Text>
+        <Text style={styles.textInfo}>ویژگی های فیزیولوژیکی روزانه</Text>
         {/* Weight */}
         
             <TextInput
@@ -134,14 +144,18 @@ import CheckBox from '@react-native-community/checkbox';
             value={weight}
             keyboardType='numeric'
             onChangeText={input=> setWeight(input)}/>
+      
 
         {/* Height */}
+       
         <TextInput
         style={styles.textInput}
         placeholder='قد خود را وارد کنید' 
         value={height}
         keyboardType='numeric'
         onChangeText={input=> setHeight(input)}/>
+
+
 
         {/* bPressure */}
         <TextInput
