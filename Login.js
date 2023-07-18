@@ -5,10 +5,13 @@ import {
 } from 'react-native';
 import styles from './Sty';
 import {gettingData,savingData} from './Utility';
+import {useDispatch, useSelector} from 'react-redux';
+import {USERINFO, API_ADDRESS, Id} from './constString';
+
 
   const Login = ({navigation})=>{
 
-  
+    const api_address = useSelector(state=> state.places.api_address);
 
     const GettingData= async()=>{
       const result= await gettingData('isLogin');
@@ -19,17 +22,47 @@ import {gettingData,savingData} from './Utility';
     } 
     useEffect(()=>{GettingData},[]);
 
-    
+    const [apiData,setApiData]= useState([]);
+
+  const LoadFromServer= async()=>{
+    fetch(api_address)
+    .then((response)=>response.json())
+    .then((json)=>{
+    console.log("\n\n all data received in firstpage: \n"+JSON.stringify(json));
+    setApiData(json); })
+    .catch((error)=>{
+      console.log("Error:", error);
+    })
+    .finally(()=>{});}
+
+  useEffect(()=>{
+    LoadFromServer(); 
+ },[]);
+
     const [user,setUser] = useState();
     const [pass,setPass] = useState();
-
+    
+  
+    const dispatch = useDispatch();
     const LoginInfo =()=>{
-    if (user==='admin' && pass==='123'){
+      if(
+        apiData.map((item)=>{
+      if (user===item.userName && pass===item.password){
+        var id = item.id;
+        console.log ("\n \n got id for specidic user => "+ item.id)
+        dispatch({
+          type: Id,
+          payload : id,
+        })
+        
+      
       savingData('isLogin','true');
-      navigation.navigate('HomeScreen');}
-    else{
-      Alert.alert('خطا!',"نام کاربری یا رمزعبور اشتباه وارد شده است!");}
-    }
+      navigation.navigate('HomeScreen');
+      }  
+      })
+      ){null}
+      else {Alert.alert('خطا!',"نام کاربری یا رمزعبور اشتباه وارد شده است!");}
+      }
      
       return(
 
@@ -48,7 +81,8 @@ import {gettingData,savingData} from './Utility';
           <TouchableOpacity onPress={LoginInfo} style={styles.button}>
             <Text style={styles.buttonText} >ورود</Text>
           </TouchableOpacity>
-           
+
+          
         </SafeAreaView>
       );
   };

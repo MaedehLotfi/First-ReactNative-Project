@@ -13,7 +13,8 @@ const styles=StyleSheet.create({
     borderRadius:10, 
     margin:10, 
     padding:5, 
-    textAlign:'center'
+    textAlign:'center',
+    
   },
   buttonText:{
     color:"white", 
@@ -49,6 +50,7 @@ const styles=StyleSheet.create({
   checkboxContainer: {
     flexDirection: 'row',
     marginBottom: 20,
+    
   },
   checkboxLabel: {
     margin: 8,
@@ -61,7 +63,15 @@ const styles=StyleSheet.create({
     backgroundColor:'#6495ed',
     borderRadius:10,
     margin:10,
-    
+  },
+  homeItemDaily:{
+    height:80,
+    width:'95%',
+    padding:10,
+    justifyContent:'center', 
+    backgroundColor:'#20b2aa',
+    borderRadius:10,
+    margin:10,
   },
   homeTouchable:{
     textAlign:'center',
@@ -69,6 +79,30 @@ const styles=StyleSheet.create({
     fontWeight:'bold',
     color:'black',
   },
+  editView:{
+    backgroundColor:'lightgray', 
+    borderRadius:5, 
+    justifyContent:"flex-end", 
+    width:50
+  },
+  editText:{
+    textAlign:'center', 
+    color:'white',  
+  },
+  submitButton:{
+    backgroundColor:'blue', 
+    borderRadius:10,
+    padding:5, 
+    margin:10,
+  },
+  submitViewContainer:{
+    borderRadius:5, 
+    borderColor:"gray", 
+    borderWidth:2,
+    padding:20,
+    margin:10
+  }
+
 });
 
 

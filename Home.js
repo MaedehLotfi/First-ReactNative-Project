@@ -11,9 +11,14 @@ import Social from './Social';
 import styles from './Sty';
 import Physical from './Physical'
 import Cognition from './Cognition';
+import DailyReport from './DailyReport';
 const Home = ({navigation})=>{
   return(
     <SafeAreaView >
+      <TouchableOpacity onPress={()=>{navigation.navigate("DailyReport")}} style={styles.homeItemDaily}>
+        <Text style={styles.homeTouchable}>گزارش روزانه</Text>
+      </TouchableOpacity>
+
       <TouchableOpacity onPress={()=>{navigation.navigate("Drugs")}} style={styles.homeItem}>
         <Text style={styles.homeTouchable}>بخش داروها</Text>
       </TouchableOpacity>
