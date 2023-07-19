@@ -12,7 +12,11 @@ import styles from './Sty';
 import Physical from './Physical'
 import Cognition from './Cognition';
 import DailyReport from './DailyReport';
+
+
 const Home = ({navigation})=>{
+
+
   return(
     <SafeAreaView >
       {/* <Text>{new Date().toLocaleString()}</Text> */}

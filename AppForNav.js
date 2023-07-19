@@ -84,9 +84,6 @@ function HomeScreen({navigation}) {
     })
     .finally(()=>{});}
 
-    
-    
-
 
   useEffect(()=>{
     LoaduserFromServer(); 
@@ -105,13 +102,13 @@ function HomeScreen({navigation}) {
             if (route.name === 'Home') {
               iconName = focused ? 'search' : 'search';
             } 
-            else if (route.name === 'Profile') {
+            else if (route.name === 'profile') {
               iconName = focused ? 'user' : 'user';
             }
             
             return <EvilIcons name={iconName} size={size} color={color} />;
           },
-          tabBarActiveTintColor: 'tomato',
+          tabBarActiveTintColor: 'black',
           tabBarInactiveTintColor: 'gray',
         })}
       >
@@ -120,7 +117,6 @@ function HomeScreen({navigation}) {
       </Tab.Navigator>
       )
       }
-    
     
     }
 

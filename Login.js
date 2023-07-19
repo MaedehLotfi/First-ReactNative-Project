@@ -11,6 +11,7 @@ import {USERINFO, API_ADDRESS, Id} from './constString';
 
   const Login = ({navigation})=>{
 
+
     const api_address = useSelector(state=> state.places.api_address);
 
     const GettingData= async()=>{
@@ -36,6 +37,7 @@ import {USERINFO, API_ADDRESS, Id} from './constString';
     .finally(()=>{});}
 
   useEffect(()=>{
+
     LoadFromServer(); 
  },[]);
 

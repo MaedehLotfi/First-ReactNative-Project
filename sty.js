@@ -46,7 +46,7 @@ const styles=StyleSheet.create({
   },
   ProfileView:{
     borderWidth:1, 
-    borderColor:'gray', 
+    borderColor:'#6495ed', 
     borderRadius:10, 
     margin:10, 
     padding:10
