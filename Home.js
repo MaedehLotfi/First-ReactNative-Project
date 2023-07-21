@@ -20,14 +20,15 @@ const Home = ({navigation})=>{
   return(
     <SafeAreaView >
       {/* <Text>{new Date().toLocaleString()}</Text> */}
+      
       <TouchableOpacity onPress={()=>{navigation.navigate("DailyReport")}} style={styles.homeItemDaily}>
         <Text style={styles.homeTouchable}>گزارش روزانه</Text>
       </TouchableOpacity>
 
       <TouchableOpacity onPress={()=>{navigation.navigate("Drugs")}} style={styles.homeItem}>
         <Text style={styles.homeTouchable}>بخش داروها</Text>
-      </TouchableOpacity>
-  
+        </TouchableOpacity>
+        
       <TouchableOpacity onPress={()=>{navigation.navigate("PhysiologicalData")}} style={styles.homeItem}>
         <Text style={styles.homeTouchable}>ویژگی های فیزیولوژیکی</Text>
       </TouchableOpacity>

@@ -5,7 +5,7 @@ import {
 } from 'react-native';
 import CheckBox from '@react-native-community/checkbox';
 import styles from './Sty';
-import Icon from 'react-native-vector-icons/EvilIcons';
+
 import {gettingData,savingData} from './Utility';
 import Fonts from './Font';
 import {useDispatch, useSelector} from 'react-redux';

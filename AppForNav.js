@@ -5,7 +5,7 @@ import {
   TouchableOpacity,useColorScheme,View,Image,
 } from 'react-native';
 
-import EvilIcons from 'react-native-vector-icons/EvilIcons'
+import Icon from 'react-native-vector-icons/MaterialIcons'
 import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import { NavigationContainer } from '@react-navigation/native';
 import { createStackNavigator } from '@react-navigation/stack';
@@ -94,26 +94,31 @@ function HomeScreen({navigation}) {
   const Tab = createBottomTabNavigator();
   return(
 <Tab.Navigator
-        screenOptions={({ route }) => ({
+        // screenOptions={({ route }) => ({
 
-          tabBarIcon: ({ focused, color, size }) => {
-            let iconName;
+        //   tabBarIcon: ({ focused, color, size }) => {
+        //     let iconName;
 
-            if (route.name === 'Home') {
-              iconName = focused ? 'search' : 'search';
-            } 
-            else if (route.name === 'profile') {
-              iconName = focused ? 'user' : 'user';
-            }
+        //     if (route.name === 'Home') {
+        //       iconName = focused ? 'home' : 'home';
+        //     } 
+        //     else if (route.name === 'profile') {
+        //       iconName = focused ? 'add-alert' : 'add-alert';
+        //     }
             
-            return <EvilIcons name={iconName} size={size} color={color} />;
-          },
-          tabBarActiveTintColor: 'black',
-          tabBarInactiveTintColor: 'gray',
-        })}
+        //     return <Icon name={iconName} size={size} color={color} />;
+        //   },
+        //   tabBarActiveTintColor: 'black',
+        //   tabBarInactiveTintColor: 'gray',
+        // })}
       >
-        <Tab.Screen name="خانه" component={Home} />
-        <Tab.Screen name="پرونده من" component={Profile} />
+        <Tab.Screen name="خانه" component={Home}
+        options={{ tabBarIcon: ({ color, size }) => (
+          <Icon name="home" color={'blue'} size={28} />)}} />
+        <Tab.Screen name="پرونده من" component={Profile}
+        options={{ tabBarIcon: ({ color, size }) => (
+          <Icon name="account-box" color={'blue'} size={28} />)}} 
+       />
       </Tab.Navigator>
       )
       }
