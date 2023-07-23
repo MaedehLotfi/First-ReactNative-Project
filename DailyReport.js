@@ -7,7 +7,6 @@ import styles from './Sty';
 import {gettingData,savingData} from './Utility';
 import {useDispatch, useSelector} from 'react-redux';
 import {USERINFO, API_ADDRESS, Id} from './constString';
-import PushNotification from 'react-native-push-notification';
 import CheckBox from '@react-native-community/checkbox';
 
   const DailyReport = ({navigation})=>{
