@@ -37,7 +37,8 @@ const Navigation = ()=>{
     <Provider store = { store }>
     <SafeAreaView style={{flexGrow:1}}>
       <NavigationContainer>
-        <Stack.Navigator initialRouteName='Splash'>
+        <Stack.Navigator initialRouteName='Spalsh'>
+
         <Stack.Screen name='Splash' component={Splash} options={{headerShown:false}}/>
         <Stack.Screen name='Login' component={Login} options={{headerShown:false}}/>
         <Stack.Screen name='HomeScreen' component={HomeScreen}  options={{headerShown:false}}/>

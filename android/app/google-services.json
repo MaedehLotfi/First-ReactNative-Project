@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "1043490277237",
+    "project_id": "moshavermoslemi",
+    "storage_bucket": "moshavermoslemi.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1043490277237:android:5b2d0a41c3a9897d77753c",
+        "android_client_info": {
+          "package_name": "com.app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1043490277237-3kr4nhhr5522747msvod0vgjpemhsjs2.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBq9aJsP0szv4HyIVFsAvEGOfgg2WTZkaY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1043490277237-3kr4nhhr5522747msvod0vgjpemhsjs2.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
