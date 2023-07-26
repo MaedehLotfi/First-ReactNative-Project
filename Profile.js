@@ -169,22 +169,22 @@ const LoadMedicationRecordFromServer= async()=>{
         <>
         <View style={{flexDirection:'row'}}>
           <View style={styles.levelView}>
-                    <CheckBox disabled={false} tintColors={{ true: 'black', false: 'black' }} value={item.movementRestriction}/>
+                    <CheckBox disabled={true} tintColors={{ true: 'black', false: 'black' }} value={item.movementRestriction} style={{ transform: [{ scaleX: 0.8 }, { scaleY: 0.8 }] }}/>
                     <Text style={styles.textLevel} >حرکتی</Text>
                   </View>
 
                   <View style={styles.levelView}>
-                    <CheckBox disabled={false} tintColors={{ true: 'black', false: 'black' }} value={item.physicalRestriction}/>
+                    <CheckBox disabled={true} tintColors={{ true: 'black', false: 'black' }} value={item.physicalRestriction} style={{ transform: [{ scaleX: 0.8 }, { scaleY: 0.8 }] }}/>
                     <Text  style={styles.textLevel} >جسمی</Text>
                   </View>
 
                   <View style={styles.levelView}>
-                    <CheckBox disabled={false} tintColors={{ true: 'black', false: 'black' }} value={item.foodRestriction}/>
+                    <CheckBox disabled={true} tintColors={{ true: 'black', false: 'black' }} value={item.foodRestriction} style={{ transform: [{ scaleX: 0.8 }, { scaleY: 0.8 }] }}/>
                     <Text style={styles.textLevel} >غذایی</Text>
                   </View>
 
                   <View style={styles.levelView}>
-                    <CheckBox disabled={false} tintColors={{ true: 'black', false: 'black' }} value={item.otherRestriction}/>
+                    <CheckBox disabled={true} tintColors={{ true: 'black', false: 'black' }} value={item.otherRestriction} style={{ transform: [{ scaleX: 0.8 }, { scaleY: 0.8 }] }}/>
                     <Text  style={styles.textLevel}>سایر محدودیتها</Text>
                   </View>
 

@@ -46,22 +46,22 @@ const Physical = ({navigation})=>{
                   <View style={{ marginTop:10}}>
                     
                   <View style={styles.levelView}>
-                    <CheckBox disabled={false} tintColors={{ true: 'red', false: 'red' }} value={item.Level1}/>
+                    <CheckBox disabled={true} tintColors={{ true: 'red', false: 'red' }} value={item.Level1}/>
                     <Text style={styles.textLevel}>سطح یک</Text>
                   </View>
 
                   <View style={styles.levelView}>
-                    <CheckBox disabled={false} tintColors={{ true: 'orange', false: 'orange' }} value={item.Level2}/>
+                    <CheckBox disabled={true} tintColors={{ true: 'orange', false: 'orange' }} value={item.Level2}/>
                     <Text  style={styles.textLevel}>سطح دو</Text>
                   </View>
 
                   <View style={styles.levelView}>
-                    <CheckBox disabled={false} tintColors={{ true: 'yellow', false: 'yellow' }} value={item.Level3}/>
+                    <CheckBox disabled={true} tintColors={{ true: 'yellow', false: 'yellow' }} value={item.Level3}/>
                     <Text  style={styles.textLevel}>سطح سه</Text>
                   </View>
 
                   <View style={styles.levelView}>
-                    <CheckBox disabled={false} tintColors={{ true: 'green', false: 'green' }} value={item.Level4}/>
+                    <CheckBox disabled={true} tintColors={{ true: 'green', false: 'green' }} value={item.Level4}/>
                     <Text style={styles.textLevel}>سطح چهار</Text>
                   </View>
                     
