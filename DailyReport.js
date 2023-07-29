@@ -15,10 +15,7 @@ import CheckBox from '@react-native-community/checkbox';
     const [morningDrug, setMorningDrug] = useState(false)
     const [eveningDrug, setEveningDrug] = useState(false)
     const [nightDrug, setNightDrug] = useState(false)
-    const [Cognition, setCognition] = useState(false)
-    const [physical, setPhysical] = useState(false)
-    const [social, setSocial] = useState(false)
-
+    
 
     const[weight,setWeight]=useState('');
     const[height,setHeight]=useState('');
@@ -30,9 +27,6 @@ import CheckBox from '@react-native-community/checkbox';
           morningDrug: morningDrug,
           eveningDrug : eveningDrug,
           nightDrug: nightDrug,
-          ACognition: Cognition,
-          APhysical: physical,
-          ASocial: social,
           Weight: weight,
           Height: height,
           bPressure: bPressure,
@@ -68,9 +62,10 @@ import CheckBox from '@react-native-community/checkbox';
 
         <SafeAreaView>
 <ScrollView>
-  
+<View style={{padding:10 ,}}>
   <Text  style={styles.textInfo}>در صورت انجام هریک از فعالیت ها در روز قبلی، باکس زیر را تیک بزنید.</Text>
-  <Text >{new Date().toLocaleString()}</Text>
+  <View style={styles.ProfileView}>
+  {/* <Text  style={styles.textInfo} >{new Date().toLocaleString()}</Text> */}
 
           <View  style={styles.tripleView}>
         <View style={styles.eachViewCheck}>
@@ -101,37 +96,6 @@ import CheckBox from '@react-native-community/checkbox';
             /> 
             <Text>دارو شب</Text>
             </View>
-
-            <View style={styles.eachViewCheck}>
-            <CheckBox
-              disabled={false}
-              value={Cognition}
-              tintColors={{ true: '#6495ed', false: '#6495ed' }}
-              onValueChange={(newValue) => setCognition(newValue)}
-            /> 
-            <Text>فعالیت شناختی</Text>
-            </View>
-
-            <View style={styles.eachViewCheck}>
-            <CheckBox
-              disabled={false}
-              tintColors={{ true: '#6495ed', false: '#6495ed' }}
-              value={physical}
-              onValueChange={(newValue) => setPhysical(newValue)}
-            /> 
-            <Text>فعالیت فیزیکی</Text>
-            </View>
-
-            <View style={styles.eachViewCheck}>
-            <CheckBox
-              disabled={false}
-              tintColors={{ true: '#6495ed', false: '#6495ed' }}
-              value={social}
-              onValueChange={(newValue) => setSocial(newValue)}
-            /> 
-            <Text>فعالیت اجتماعی</Text>
-            </View>
-
   
   </View>
         <Text style={styles.textInfo}>ویژگی های فیزیولوژیکی روزانه</Text>
@@ -184,6 +148,9 @@ import CheckBox from '@react-native-community/checkbox';
   <TouchableOpacity onPress={SendToServer}  style={styles.button} >
     <Text  style={styles.buttonText}>ارسال اطلاعات</Text>
   </TouchableOpacity>
+
+  </View>
+  </View>
   </ScrollView>
         </SafeAreaView>
       );

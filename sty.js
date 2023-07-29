@@ -69,7 +69,7 @@ const styles=StyleSheet.create({
     margin:10,
   },
   homeItemDaily:{
-    height:80,
+    height:50,
     width:'95%',
     padding:10,
     justifyContent:'center', 
@@ -115,6 +115,11 @@ const styles=StyleSheet.create({
   },
   textInfo:{
     fontSize:18,
+    color:'black',
+    textAlign:'center',
+  },
+  textInfo:{
+    fontSize:18,
     fontWeight:'bold',
     color:'black',
     fontFamily:Fonts.IRANSansMobile,
@@ -132,6 +137,15 @@ const styles=StyleSheet.create({
     width:'30%', 
     height:60, 
     alignItems:'center',
+  },
+  discriptionTextInput:{
+    borderColor:"#00008B", 
+    borderWidth:1, 
+    borderRadius:10, 
+    margin:10, 
+    padding:5, 
+    textAlign:'center',
+    width:"50%"
   }
 });
 

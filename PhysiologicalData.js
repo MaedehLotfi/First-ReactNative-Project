@@ -30,7 +30,7 @@ const PhysiologicalData = ({navigation})=>{
     return(
         
         <SafeAreaView >
-          
+          <View style={{padding:10 ,}}>
       <Text style={styles.textInfo}>اطلاعات فیزیولوژیکی شما ثبت شده توسط دکتر معالج</Text>
       <FlatList
       data={physiologicalData}
@@ -49,7 +49,7 @@ const PhysiologicalData = ({navigation})=>{
 
          
 
-  
+</View>
 </SafeAreaView>
     );
 }

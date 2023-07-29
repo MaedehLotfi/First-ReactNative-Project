@@ -24,7 +24,7 @@ import {gettingData,savingData} from './Utility';
 import {useDispatch, useSelector} from 'react-redux';
 import {USERINFO, API_ADDRESS, Id} from './constString';
 import CheckBox from '@react-native-community/checkbox';
-
+import Icon from 'react-native-vector-icons/MaterialIcons'
 
 const Profile = ({navigation})=>{
   
@@ -111,7 +111,10 @@ const LoadMedicationRecordFromServer= async()=>{
     <SafeAreaView style={{direction:'rtl'}}>
       <ScrollView>
       <View style={styles.ProfileView}>
+        <View style={{flexDirection:'row'}}>
+      <Icon name="person" color={'#000080'} size={30} />
       <Text style={styles.title}>نمایش اطلاعات کاربری</Text>
+      </View>
       <FlatList
       data={apiSpecificData}
       keyExtractor={(item)=>item.id}
@@ -129,7 +132,11 @@ const LoadMedicationRecordFromServer= async()=>{
 
 
       <View style={styles.ProfileView}>
+      <View style={{flexDirection:'row'}}>
+      <Icon name="assignment" color={'#000080'} size={30} />
       <Text style={styles.title}>سوابق بیماری</Text>
+      </View>
+     
       <FlatList
       data={diseaseRecordData}
       keyExtractor={(item)=>item.id}
@@ -145,7 +152,11 @@ const LoadMedicationRecordFromServer= async()=>{
       
 
       <View style={styles.ProfileView}>
+      <View style={{flexDirection:'row'}}>
+      <Icon name="assignment" color={'#000080'} size={30} />
       <Text style={styles.title}>سوابق مصرف دارو</Text>
+      </View>
+      
       <FlatList
       data={medicationRecordData}
       keyExtractor={(item)=>item.id}
@@ -161,7 +172,11 @@ const LoadMedicationRecordFromServer= async()=>{
 </View>
 
 <View style={styles.ProfileView}>
+<View style={{flexDirection:'row'}}>
+      <Icon name="priority-high" color={'#000080'} size={30} />
       <Text style={styles.title}>محدودیت های بیمار</Text>
+      </View>
+      
       <FlatList
       data={patientLimitationData}
       keyExtractor={(item)=>item.id}

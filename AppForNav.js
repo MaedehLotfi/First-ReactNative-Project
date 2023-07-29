@@ -28,7 +28,7 @@ import DailyReport from './DailyReport';
 import configureStore from './store';
 import {Provider, useDispatch, useSelector} from 'react-redux';
 import {USERINFO, API_ADDRESS, Id} from './constString';
-
+import Test from './test';
 
 const Navigation = ()=>{
   const Stack = createStackNavigator();
@@ -37,7 +37,8 @@ const Navigation = ()=>{
     <Provider store = { store }>
     <SafeAreaView style={{flexGrow:1}}>
       <NavigationContainer>
-        <Stack.Navigator initialRouteName='Spalsh'>
+        <Stack.Navigator initialRouteName='Splash'>
+        {/* <Stack.Screen name='Test' component={Test} /> */}
 
         <Stack.Screen name='Splash' component={Splash} options={{headerShown:false}}/>
         <Stack.Screen name='Login' component={Login} options={{headerShown:false}}/>
@@ -115,10 +116,10 @@ function HomeScreen({navigation}) {
       >
         <Tab.Screen name="خانه" component={Home}
         options={{ tabBarIcon: ({ color, size }) => (
-          <Icon name="home" color={'blue'} size={28} />)}} />
+          <Icon name="home" color={'#000080'} size={28} />)}} />
         <Tab.Screen name="پرونده من" component={Profile}
         options={{ tabBarIcon: ({ color, size }) => (
-          <Icon name="account-box" color={'blue'} size={28} />)}} 
+          <Icon name="account-box" color={'#000080'} size={28} />)}} 
        />
       </Tab.Navigator>
       )

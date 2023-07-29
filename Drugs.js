@@ -33,6 +33,7 @@ const Drugs = ({navigation})=>{
 
     return(
         <SafeAreaView>
+          <View style={{padding:10 ,}}>
                  <Text  style={styles.textInfo}>دارو های تجویز شده توسط دکتر برای شما</Text>
 
             <FlatList
@@ -56,7 +57,7 @@ const Drugs = ({navigation})=>{
             
             
 
-      
+            </View>
       
 
         </SafeAreaView>
