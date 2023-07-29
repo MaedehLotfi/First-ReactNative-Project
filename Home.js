@@ -19,7 +19,7 @@ import Icon from 'react-native-vector-icons/MaterialIcons'
 const Home = ({navigation})=>{
   const [cognitionData,setCognitionData]= useState([]);
   const LoadACognitionDataFromServer= async()=>{
-    fetch("http://moshavermoslemi.ir/api/App/GetACognitions/"+1)
+    fetch("http://moshavermoslemi.ir/api/App/GetACognitions/"+id)
     .then((response)=>response.json())
     .then((json)=>{
     console.log("\n\n!!!!!!!!! ACognitionData received with id in : \n"+JSON.stringify(json));
@@ -49,7 +49,7 @@ const Home = ({navigation})=>{
     const [selfManagementData,setSelfManagementData]= useState([]);
 
     const LoadSelfManagementDataFromServer= async()=>{
-      fetch("http://moshavermoslemi.ir/api/App/GetASelfManagement/"+1)
+      fetch("http://moshavermoslemi.ir/api/App/GetASelfManagement/"+id)
       .then((response)=>response.json())
       .then((json)=>{
       console.log("\n\n!!!!!!!!! SelfManagement received  : \n"+JSON.stringify(json));
@@ -62,7 +62,7 @@ const Home = ({navigation})=>{
       const [socialData,setSocialData]= useState([]);
 
    const LoadASocialDataFromServer= async()=>{
-     fetch("http://moshavermoslemi.ir/api/App/GetASocials/"+1)
+     fetch("http://moshavermoslemi.ir/api/App/GetASocials/"+id)
      .then((response)=>response.json())
      .then((json)=>{
      console.log("\n\n!!!!!!!!! SocialData received with id in : \n"+JSON.stringify(json));
@@ -78,7 +78,7 @@ const Home = ({navigation})=>{
     const [physicalData,setPhysicalData]= useState([]);
 
     const LoadAPhysicalDataFromServer= async()=>{
-      fetch("http://moshavermoslemi.ir/api/App/GetAPhysical/"+1)
+      fetch("http://moshavermoslemi.ir/api/App/GetAPhysical/"+id)
       .then((response)=>response.json())
       .then((json)=>{
       console.log("\n\n!!!!!!!!! APhysicalData received with id in : \n"+JSON.stringify(json));
@@ -97,18 +97,19 @@ const Home = ({navigation})=>{
     LoadASocialDataFromServer();
     LoadAPhysicalDataFromServer();
  },[]);
-  PushNotification.localNotificationSchedule({
-    //... You can use all the options from localNotifications
-    channelId: "channel-daily",
-    repeatType: 'day',
-    message: "گزارش روزانه یادتان نرود! لطفا هرشب گزارش روز را ثبت کنید", // (required)
-    date: new Date(Date.now() + 30 * 1000), // in 60 secs
-    allowWhileIdle: false, // (optional) set notification to work while on doze, default: false
   
-    /* Android Only Properties */
-    //repeatTime: 1, // (optional) Increment of configured repeatType. Check 'Repeating Notifications' section for more info.
-    //showWhen:true,
-  });
+//  PushNotification.localNotificationSchedule({
+//     //... You can use all the options from localNotifications
+//     channelId: "channel-daily",
+//     repeatType: 'day',
+//     message: "گزارش روزانه یادتان نرود! لطفا هرشب گزارش روز و فعالیتها را ثبت کنید", // (required)
+//     date: new Date(Date.now() + 30 * 1000), // in 30 secs
+//     allowWhileIdle: false, // (optional) set notification to work while on doze, default: false
+  
+//     /* Android Only Properties */
+//     //repeatTime: 1, // (optional) Increment of configured repeatType. Check 'Repeating Notifications' section for more info.
+//     //showWhen:true,
+//   });
 
 
   return(
@@ -126,9 +127,9 @@ const Home = ({navigation})=>{
         <Icon name="person" color={'#000080'} size={60} />
         </View>
         <View>
-        <Text style={styles.textInfo}>نام و نام خانوادگی: {item.FullName}</Text>
-        <Text style={styles.textInfo}>شماره ملی: {item.NationalCode}</Text>
-        <Text style={styles.textInfo}>شماره پرونده: {item.id}</Text>
+        <Text style={styles.textLevel}>نام و نام خانوادگی: {item.FullName}</Text>
+        <Text style={styles.textLevel}>شماره ملی: {item.NationalCode}</Text>
+        <Text style={styles.textLevel}>شماره پرونده: {item.id}</Text>
         </View>
         </View>
       )}/>
@@ -136,75 +137,63 @@ const Home = ({navigation})=>{
 
 {/* table */}
 <View style={styles.ProfileView}>
-<View style={{ width:'95%', height:30,flexDirection:'row', margin:5}}>
-  
-
-<View style={{height:30, width:'10%', backgroundColor:'white',borderColor:'black', borderWidth:1}}>
-      <Text style={styles.textInfo}>عنوان</Text>
+<View style={{ width:'95%', height:30,flexDirection:'row',margin:5}}>
+    <View style={{height:30, width:'20%', borderColor:'black', borderWidth:1}}>
+      <Text >عنوان فعالیت</Text>
     </View>
-    <View style={{height:30, width:'25%', backgroundColor:'yellow',borderColor:'black', borderWidth:1}}>
-      <Text style={styles.textInfo}>سطح یک</Text>
-    </View>
-    <View style={{height:30, width:'25%', backgroundColor:'orange', borderColor:'black', borderWidth:1 }}>
-    <Text style={styles.textInfo}>سطح دو</Text>
-    </View>
-    <View style={{height:30, width:'25%', backgroundColor:'red', borderColor:'black', borderWidth:1}}>
-    <Text style={styles.textInfo}>سطح سه</Text>
-    </View>
-    <View style={{height:30, width:'25%', backgroundColor:'green',borderColor:'black', borderWidth:1 }}>
-    <Text style={styles.textInfo}>سطح چهار</Text>
-    </View>
+    <View style={{height:30, width:'20%',  backgroundColor:'yellow' ,borderColor:'black', borderWidth:1}}><Text style={{textAlign:'center'}}>سطح یک</Text></View>
+    <View style={{height:30, width:'20%',backgroundColor:'orange' , borderColor:'black', borderWidth:1 }}><Text style={{textAlign:'center'}}>سطح دو</Text></View>
+    <View style={{height:30, width:'20%', backgroundColor:'red' , borderColor:'black', borderWidth:1}}><Text style={{textAlign:'center'}}>سطح سه</Text></View>
+    <View style={{height:30, width:'20%', backgroundColor:'green' , borderColor:'black', borderWidth:1}}><Text style={{textAlign:'center'}}>سطح چهار</Text></View>
 </View>
 
-{/* cognition */}
-  {cognitionData.map((item)=>{
+{cognitionData.map((item)=>{
     let Level1 = item.Level1 ;
     let Level2 = item.Level2 ;
     let Level3 = item.Level3 ;
     let Level4 = item.Level4 ;
-    // console.log('Level1,Level2,Level3,Level4 == '+Level1,Level2,Level3,Level4)
 if (Level1===true){return(
   <View style={{ width:'95%', height:30,flexDirection:'row',margin:5}}>
-    <View style={{height:30, width:'25%', backgroundColor:'white', borderColor:'black', borderWidth:1}}>
-      <Text style={styles.textInfo}>شناختی</Text>
+    <View style={{height:30, width:'20%', borderColor:'black', borderWidth:1}}>
+      <Text >شناختی</Text>
     </View>
-    <View style={{height:30, width:'25%',  backgroundColor:'yellow' ,borderColor:'black', borderWidth:1}}></View>
-    <View style={{height:30, width:'25%', borderColor:'black', borderWidth:1 }}></View>
-    <View style={{height:30, width:'25%',  borderColor:'black', borderWidth:1}}></View>
-    <View style={{height:30, width:'25%',  borderColor:'black', borderWidth:1}}></View>
+    <View style={{height:30, width:'20%',  backgroundColor:'yellow' ,borderColor:'black', borderWidth:1}}><Text style={{textAlign:'center'}}>سطح شما</Text></View>
+    <View style={{height:30, width:'20%', borderColor:'black', borderWidth:1 }}></View>
+    <View style={{height:30, width:'20%',  borderColor:'black', borderWidth:1}}></View>
+    <View style={{height:30, width:'20%',  borderColor:'black', borderWidth:1}}></View>
 </View>)}
 
 if (Level2===true){return(
-  <View style={{ width:'100%', height:30,flexDirection:'row'}}>
-    <View style={{height:30, width:'25%', backgroundColor:'white'}}>
-      <Text style={styles.textInfo}>شناختی</Text>
+  <View style={{ width:'95%', height:30,flexDirection:'row',margin:5}}>
+    <View style={{height:30, width:'20%', borderColor:'black', borderWidth:1}}>
+      <Text >شناختی</Text>
     </View>
-<View style={{height:30, width:'25%', borderColor:'yellow', borderWidth:1}}></View>
-<View style={{height:30, width:'25%',  backgroundColor:'orange'}}></View>
-<View style={{height:30, width:'25%',  borderColor:'red', borderWidth:1}}></View>
-<View style={{height:30, width:'25%',  borderColor:'green', borderWidth:1}}></View>
+<View style={{height:30, width:'20%', borderColor:'black', borderWidth:1}}></View>
+<View style={{height:30, width:'20%', borderColor:'black', backgroundColor:'orange', borderWidth:1}}><Text style={{textAlign:'center'}}>سطح شما</Text></View>
+<View style={{height:30, width:'20%',  borderColor:'black', borderWidth:1}}></View>
+<View style={{height:30, width:'20%',  borderColor:'black', borderWidth:1}}></View>
 </View>)}
 
 if (Level3===true){return(
-  <View style={{ width:'100%', height:30,flexDirection:'row'}}>
-    <View style={{height:30, width:'25%', backgroundColor:'white'}}>
-      <Text style={styles.textInfo}>شناختی</Text>
+  <View style={{ width:'95%', height:30,flexDirection:'row',margin:5}}>
+    <View style={{height:30, width:'20%', borderColor:'black', borderWidth:1}}>
+      <Text >شناختی</Text>
     </View>
-<View style={{height:30, width:'25%', borderColor:'yellow', borderWidth:1}}></View>
-<View style={{height:30, width:'25%',  borderColor:'orange', borderWidth:1}}></View>
-<View style={{height:30, width:'25%', backgroundColor:'red'}}></View>
-<View style={{height:30, width:'25%',  borderColor:'green', borderWidth:1}}></View>
+<View style={{height:30, width:'20%', borderColor:'black', borderWidth:1}}></View>
+<View style={{height:30, width:'20%',  borderColor:'black', borderWidth:1}}></View>
+<View style={{height:30, width:'20%', borderColor:'black', backgroundColor:'red', borderWidth:1}}><Text style={{textAlign:'center'}}>سطح شما</Text></View>
+<View style={{height:30, width:'20%',  borderColor:'black', borderWidth:1}}></View>
 </View>)}
 
 if (Level4===true){return(
-  <View style={{ width:'100%', height:30,flexDirection:'row'}}>
-    <View style={{height:30, width:'25%', backgroundColor:'white'}}>
-      <Text style={styles.textInfo}>شناختی</Text>
+  <View style={{ width:'95%', height:30,flexDirection:'row',margin:5}}>
+    <View style={{height:30, width:'20%', borderColor:'black', borderWidth:1}}>
+      <Text >شناختی</Text>
     </View>
-<View style={{height:30, width:'25%', borderColor:'yellow', borderWidth:1}}></View>
-<View style={{height:30, width:'25%',  borderColor:'orange', borderWidth:1}}></View>
-<View style={{height:30, width:'25%', borderColor:'red', borderWidth:1}}></View>
-<View style={{height:30, width:'25%',  backgroundColor:'green',}}></View>
+<View style={{height:30, width:'20%', borderColor:'black', borderWidth:1}}></View>
+<View style={{height:30, width:'20%',  borderColor:'black', borderWidth:1}}></View>
+<View style={{height:30, width:'20%', borderColor:'black', borderWidth:1}}></View>
+<View style={{height:30, width:'20%', borderColor:'black', backgroundColor:'green', borderWidth:1}}><Text style={{textAlign:'center'}}>سطح شما</Text></View>
 </View>)}
 })} 
 
@@ -213,49 +202,48 @@ if (Level4===true){return(
     let Level2 = item.Level2 ;
     let Level3 = item.Level3 ;
     let Level4 = item.Level4 ;
-    // console.log('Level1,Level2,Level3,Level4 == '+Level1,Level2,Level3,Level4)
 if (Level1===true){return(
-  <View style={{ width:'100%', height:30,flexDirection:'row'}}>
-    <View style={{height:30, width:'25%', backgroundColor:'white'}}>
-      <Text style={styles.textInfo}>فیزیکی</Text>
+  <View style={{ width:'95%', height:30,flexDirection:'row',margin:5}}>
+    <View style={{height:30, width:'20%', borderColor:'black', borderWidth:1}}>
+      <Text >فیزیکی</Text>
     </View>
-    <View style={{height:30, width:'25%',  backgroundColor:'yellow'}}></View>
-    <View style={{height:30, width:'25%', borderColor:'orange', borderWidth:1 }}></View>
-    <View style={{height:30, width:'25%',   borderColor:'red', borderWidth:1}}></View>
-    <View style={{height:30, width:'25%',   borderColor:'green', borderWidth:1}}></View>
+    <View style={{height:30, width:'20%',  backgroundColor:'yellow' ,borderColor:'black', borderWidth:1}}><Text style={{textAlign:'center'}}>سطح شما</Text></View>
+    <View style={{height:30, width:'20%', borderColor:'black', borderWidth:1 }}></View>
+    <View style={{height:30, width:'20%',  borderColor:'black', borderWidth:1}}></View>
+    <View style={{height:30, width:'20%',  borderColor:'black', borderWidth:1}}></View>
 </View>)}
 
 if (Level2===true){return(
-  <View style={{ width:'100%', height:30,flexDirection:'row'}}>
-    <View style={{height:30, width:'25%', backgroundColor:'white'}}>
-      <Text style={styles.textInfo}>فیزیکی</Text>
+  <View style={{ width:'95%', height:30,flexDirection:'row',margin:5}}>
+    <View style={{height:30, width:'20%', borderColor:'black', borderWidth:1}}>
+      <Text >فیزیکی</Text>
     </View>
-<View style={{height:30, width:'25%', borderColor:'yellow', borderWidth:1}}></View>
-<View style={{height:30, width:'25%',  backgroundColor:'orange'}}></View>
-<View style={{height:30, width:'25%',  borderColor:'red', borderWidth:1}}></View>
-<View style={{height:30, width:'25%',  borderColor:'green', borderWidth:1}}></View>
+<View style={{height:30, width:'20%', borderColor:'black', borderWidth:1}}></View>
+<View style={{height:30, width:'20%', borderColor:'black', backgroundColor:'orange', borderWidth:1}}><Text style={{textAlign:'center'}}>سطح شما</Text></View>
+<View style={{height:30, width:'20%',  borderColor:'black', borderWidth:1}}></View>
+<View style={{height:30, width:'20%',  borderColor:'black', borderWidth:1}}></View>
 </View>)}
 
 if (Level3===true){return(
-  <View style={{ width:'100%', height:30,flexDirection:'row'}}>
-    <View style={{height:30, width:'25%', backgroundColor:'white'}}>
-      <Text style={styles.textInfo}>فیزیکی</Text>
+  <View style={{ width:'95%', height:30,flexDirection:'row',margin:5}}>
+    <View style={{height:30, width:'20%', borderColor:'black', borderWidth:1}}>
+      <Text >فیزیکی</Text>
     </View>
-<View style={{height:30, width:'25%', borderColor:'yellow', borderWidth:1}}></View>
-<View style={{height:30, width:'25%',  borderColor:'orange', borderWidth:1}}></View>
-<View style={{height:30, width:'25%', backgroundColor:'red'}}></View>
-<View style={{height:30, width:'25%',  borderColor:'green', borderWidth:1}}></View>
+<View style={{height:30, width:'20%', borderColor:'black', borderWidth:1}}></View>
+<View style={{height:30, width:'20%',  borderColor:'black', borderWidth:1}}></View>
+<View style={{height:30, width:'20%', borderColor:'black', backgroundColor:'red', borderWidth:1}}><Text style={{textAlign:'center'}}>سطح شما</Text></View>
+<View style={{height:30, width:'20%',  borderColor:'black', borderWidth:1}}></View>
 </View>)}
 
 if (Level4===true){return(
-  <View style={{ width:'100%', height:30,flexDirection:'row'}}>
-    <View style={{height:30, width:'25%', backgroundColor:'white'}}>
-      <Text style={styles.textInfo}>فیزیکی</Text>
+  <View style={{ width:'95%', height:30,flexDirection:'row',margin:5}}>
+    <View style={{height:30, width:'20%', borderColor:'black', borderWidth:1}}>
+      <Text >فیزیکی</Text>
     </View>
-<View style={{height:30, width:'25%', borderColor:'yellow', borderWidth:1}}></View>
-<View style={{height:30, width:'25%',  borderColor:'orange', borderWidth:1}}></View>
-<View style={{height:30, width:'25%', borderColor:'red', borderWidth:1}}></View>
-<View style={{height:30, width:'25%',  backgroundColor:'green',}}></View>
+<View style={{height:30, width:'20%', borderColor:'black', borderWidth:1}}></View>
+<View style={{height:30, width:'20%',  borderColor:'black', borderWidth:1}}></View>
+<View style={{height:30, width:'20%', borderColor:'black', borderWidth:1}}></View>
+<View style={{height:30, width:'20%', borderColor:'black', backgroundColor:'green', borderWidth:1}}><Text style={{textAlign:'center'}}>سطح شما</Text></View>
 </View>)}
 })} 
 
@@ -264,49 +252,48 @@ if (Level4===true){return(
     let Level2 = item.Level2 ;
     let Level3 = item.Level3 ;
     let Level4 = item.Level4 ;
-    // console.log('Level1,Level2,Level3,Level4 == '+Level1,Level2,Level3,Level4)
 if (Level1===true){return(
-  <View style={{ width:'100%', height:30,flexDirection:'row'}}>
-    <View style={{height:30, width:'25%', backgroundColor:'white'}}>
-      <Text style={styles.textInfo}>اجتماعی</Text>
+  <View style={{ width:'95%', height:30,flexDirection:'row',margin:5}}>
+    <View style={{height:30, width:'20%', borderColor:'black', borderWidth:1}}>
+      <Text >اجتماعی</Text>
     </View>
-    <View style={{height:30, width:'25%',  backgroundColor:'yellow'}}></View>
-    <View style={{height:30, width:'25%', borderColor:'orange', borderWidth:1 }}></View>
-    <View style={{height:30, width:'25%',   borderColor:'red', borderWidth:1}}></View>
-    <View style={{height:30, width:'25%',   borderColor:'green', borderWidth:1}}></View>
+    <View style={{height:30, width:'20%',  backgroundColor:'yellow' ,borderColor:'black', borderWidth:1}}><Text style={{textAlign:'center'}}>سطح شما</Text></View>
+    <View style={{height:30, width:'20%', borderColor:'black', borderWidth:1 }}></View>
+    <View style={{height:30, width:'20%',  borderColor:'black', borderWidth:1}}></View>
+    <View style={{height:30, width:'20%',  borderColor:'black', borderWidth:1}}></View>
 </View>)}
 
 if (Level2===true){return(
-  <View style={{ width:'100%', height:30,flexDirection:'row'}}>
-    <View style={{height:30, width:'25%', backgroundColor:'white'}}>
-      <Text style={styles.textInfo}>اجتماعی</Text>
+  <View style={{ width:'95%', height:30,flexDirection:'row',margin:5}}>
+    <View style={{height:30, width:'20%', borderColor:'black', borderWidth:1}}>
+      <Text >اجتماعی</Text>
     </View>
-<View style={{height:30, width:'25%', borderColor:'yellow', borderWidth:1}}></View>
-<View style={{height:30, width:'25%',  backgroundColor:'orange'}}></View>
-<View style={{height:30, width:'25%',  borderColor:'red', borderWidth:1}}></View>
-<View style={{height:30, width:'25%',  borderColor:'green', borderWidth:1}}></View>
+<View style={{height:30, width:'20%', borderColor:'black', borderWidth:1}}></View>
+<View style={{height:30, width:'20%', borderColor:'black', backgroundColor:'orange', borderWidth:1}}><Text style={{textAlign:'center'}}>سطح شما</Text></View>
+<View style={{height:30, width:'20%',  borderColor:'black', borderWidth:1}}></View>
+<View style={{height:30, width:'20%',  borderColor:'black', borderWidth:1}}></View>
 </View>)}
 
 if (Level3===true){return(
-  <View style={{ width:'100%', height:30,flexDirection:'row'}}>
-    <View style={{height:30, width:'25%', backgroundColor:'white'}}>
-      <Text style={styles.textInfo}>اجتماعی</Text>
+  <View style={{ width:'95%', height:30,flexDirection:'row',margin:5}}>
+    <View style={{height:30, width:'20%', borderColor:'black', borderWidth:1}}>
+      <Text >اجتماعی</Text>
     </View>
-<View style={{height:30, width:'25%', borderColor:'yellow', borderWidth:1}}></View>
-<View style={{height:30, width:'25%',  borderColor:'orange', borderWidth:1}}></View>
-<View style={{height:30, width:'25%', backgroundColor:'red'}}></View>
-<View style={{height:30, width:'25%',  borderColor:'green', borderWidth:1}}></View>
+<View style={{height:30, width:'20%', borderColor:'black', borderWidth:1}}></View>
+<View style={{height:30, width:'20%',  borderColor:'black', borderWidth:1}}></View>
+<View style={{height:30, width:'20%', borderColor:'black', backgroundColor:'red', borderWidth:1}}><Text style={{textAlign:'center'}}>سطح شما</Text></View>
+<View style={{height:30, width:'20%',  borderColor:'black', borderWidth:1}}></View>
 </View>)}
 
 if (Level4===true){return(
-  <View style={{ width:'100%', height:30,flexDirection:'row'}}>
-    <View style={{height:30, width:'25%', backgroundColor:'white'}}>
-      <Text style={styles.textInfo}>اجتماعی</Text>
+  <View style={{ width:'95%', height:30,flexDirection:'row',margin:5}}>
+    <View style={{height:30, width:'20%', borderColor:'black', borderWidth:1}}>
+      <Text >اجتماعی</Text>
     </View>
-<View style={{height:30, width:'25%', borderColor:'yellow', borderWidth:1}}></View>
-<View style={{height:30, width:'25%',  borderColor:'orange', borderWidth:1}}></View>
-<View style={{height:30, width:'25%', borderColor:'red', borderWidth:1}}></View>
-<View style={{height:30, width:'25%',  backgroundColor:'green',}}></View>
+<View style={{height:30, width:'20%', borderColor:'black', borderWidth:1}}></View>
+<View style={{height:30, width:'20%',  borderColor:'black', borderWidth:1}}></View>
+<View style={{height:30, width:'20%', borderColor:'black', borderWidth:1}}></View>
+<View style={{height:30, width:'20%', borderColor:'black', backgroundColor:'green', borderWidth:1}}><Text style={{textAlign:'center'}}>سطح شما</Text></View>
 </View>)}
 })} 
 
@@ -315,49 +302,48 @@ if (Level4===true){return(
     let Level2 = item.Level2 ;
     let Level3 = item.Level3 ;
     let Level4 = item.Level4 ;
-    // console.log('Level1,Level2,Level3,Level4 == '+Level1,Level2,Level3,Level4)
 if (Level1===true){return(
-  <View style={{ width:'100%', height:30,flexDirection:'row'}}>
-    <View style={{height:30, width:'25%', backgroundColor:'white'}}>
-      <Text style={styles.textInfo}>خودمدیریتی</Text>
+  <View style={{ width:'95%', height:30,flexDirection:'row',margin:5}}>
+    <View style={{height:30, width:'20%', borderColor:'black', borderWidth:1}}>
+      <Text >خودمدیریتی</Text>
     </View>
-    <View style={{height:30, width:'25%',  backgroundColor:'yellow'}}></View>
-    <View style={{height:30, width:'25%', borderColor:'orange', borderWidth:1 }}></View>
-    <View style={{height:30, width:'25%',   borderColor:'red', borderWidth:1}}></View>
-    <View style={{height:30, width:'25%',   borderColor:'green', borderWidth:1}}></View>
+    <View style={{height:30, width:'20%',  backgroundColor:'yellow' ,borderColor:'black', borderWidth:1}}><Text style={{textAlign:'center'}}>سطح شما</Text></View>
+    <View style={{height:30, width:'20%', borderColor:'black', borderWidth:1 }}></View>
+    <View style={{height:30, width:'20%',  borderColor:'black', borderWidth:1}}></View>
+    <View style={{height:30, width:'20%',  borderColor:'black', borderWidth:1}}></View>
 </View>)}
 
 if (Level2===true){return(
-  <View style={{ width:'100%', height:30,flexDirection:'row'}}>
-    <View style={{height:30, width:'25%', backgroundColor:'white'}}>
-      <Text style={styles.textInfo}>خودمدیریتی</Text>
+  <View style={{ width:'95%', height:30,flexDirection:'row',margin:5}}>
+    <View style={{height:30, width:'20%', borderColor:'black', borderWidth:1}}>
+      <Text >خودمدیریتی</Text>
     </View>
-<View style={{height:30, width:'25%', borderColor:'yellow', borderWidth:1}}></View>
-<View style={{height:30, width:'25%',  backgroundColor:'orange'}}></View>
-<View style={{height:30, width:'25%',  borderColor:'red', borderWidth:1}}></View>
-<View style={{height:30, width:'25%',  borderColor:'green', borderWidth:1}}></View>
+<View style={{height:30, width:'20%', borderColor:'black', borderWidth:1}}></View>
+<View style={{height:30, width:'20%', borderColor:'black', backgroundColor:'orange', borderWidth:1}}><Text style={{textAlign:'center'}}>سطح شما</Text></View>
+<View style={{height:30, width:'20%',  borderColor:'black', borderWidth:1}}></View>
+<View style={{height:30, width:'20%',  borderColor:'black', borderWidth:1}}></View>
 </View>)}
 
 if (Level3===true){return(
-  <View style={{ width:'100%', height:30,flexDirection:'row'}}>
-    <View style={{height:30, width:'25%', backgroundColor:'white'}}>
-      <Text style={styles.textInfo}>خودمدیریتی</Text>
+  <View style={{ width:'95%', height:30,flexDirection:'row',margin:5}}>
+    <View style={{height:30, width:'20%', borderColor:'black', borderWidth:1}}>
+      <Text >خودمدیریتی</Text>
     </View>
-<View style={{height:30, width:'25%', borderColor:'yellow', borderWidth:1}}></View>
-<View style={{height:30, width:'25%',  borderColor:'orange', borderWidth:1}}></View>
-<View style={{height:30, width:'25%', backgroundColor:'red'}}></View>
-<View style={{height:30, width:'25%',  borderColor:'green', borderWidth:1}}></View>
+<View style={{height:30, width:'20%', borderColor:'black', borderWidth:1}}></View>
+<View style={{height:30, width:'20%',  borderColor:'black', borderWidth:1}}></View>
+<View style={{height:30, width:'20%', borderColor:'black', backgroundColor:'red', borderWidth:1}}><Text style={{textAlign:'center'}}>سطح شما</Text></View>
+<View style={{height:30, width:'20%',  borderColor:'black', borderWidth:1}}></View>
 </View>)}
 
 if (Level4===true){return(
-  <View style={{ width:'100%', height:30,flexDirection:'row'}}>
-    <View style={{height:30, width:'25%', backgroundColor:'white'}}>
-      <Text style={styles.textInfo}>خودمدیریتی</Text>
+  <View style={{ width:'95%', height:30,flexDirection:'row',margin:5}}>
+    <View style={{height:30, width:'20%', borderColor:'black', borderWidth:1}}>
+      <Text >خودمدیریتی</Text>
     </View>
-<View style={{height:30, width:'25%', borderColor:'yellow', borderWidth:1}}></View>
-<View style={{height:30, width:'25%',  borderColor:'orange', borderWidth:1}}></View>
-<View style={{height:30, width:'25%', borderColor:'red', borderWidth:1}}></View>
-<View style={{height:30, width:'25%',  backgroundColor:'green',}}></View>
+<View style={{height:30, width:'20%', borderColor:'black', borderWidth:1}}></View>
+<View style={{height:30, width:'20%',  borderColor:'black', borderWidth:1}}></View>
+<View style={{height:30, width:'20%', borderColor:'black', borderWidth:1}}></View>
+<View style={{height:30, width:'20%', borderColor:'black', backgroundColor:'green', borderWidth:1}}><Text style={{textAlign:'center'}}>سطح شما</Text></View>
 </View>)}
 })} 
 
