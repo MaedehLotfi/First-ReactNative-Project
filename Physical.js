@@ -34,7 +34,7 @@ const Physical = ({navigation})=>{
    const [softness, setSoftness] = useState(false)
    const [running, setRunning] = useState(false)
    const [building, setBuilding] = useState(false)
-   const [fitness, setfitness] = useState(false)
+   const [fitness, setFitness] = useState(false)
    const [exercise, setExercise] = useState(false)
    const [other, setOther] = useState(false)
    const [discription,setDiscription]=useState('');
@@ -71,8 +71,16 @@ const Physical = ({navigation})=>{
 
   const SendToServer=()=>{
     SendPhysicalDataToServer();
-    Alert.alert('اطلاعات ارسال شد!', "اطلاعات امروز ارسال شد");
-
+    Alert.alert('اطلاعات امروز ارسال شد!', "اطلاعات فعالیت های فیزیکی ارسال شد");
+    setWalking(false);
+    setWalkingMore(false);
+    setSoftness(false);
+    setRunning(false);
+    setBuilding (false);
+    setFitness(false);
+    setExercise(false);
+    setOther(false);
+    setDiscription("");
   }
 
 
@@ -169,7 +177,7 @@ const Physical = ({navigation})=>{
               disabled={false}
               value={fitness}
               tintColors={{ true: '#00008B', false: '#191970' }}
-              onValueChange={(newValue) => setfitness(newValue)}
+              onValueChange={(newValue) => setFitness(newValue)}
             /> 
             <Text style={styles.textLevel}>آمادگی جسمانی</Text>
         </View>

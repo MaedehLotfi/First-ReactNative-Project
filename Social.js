@@ -77,8 +77,19 @@ const Social = ({navigation})=>{
 
   const SendToServer=()=>{
     SendSocialDataToServer();
-    Alert.alert('اطلاعات ارسال شد!', "اطلاعات امروز ارسال شد");
-    
+    Alert.alert('اطلاعات امروز ارسال شد!', "اطلاعات فعالیت های اجتماعی ارسال شد");
+    setWalking(false);
+    setParty (false);
+    setPicnic(false);
+    setOutsideCity(false);
+    setGroupActivity(false);
+    setHelping(false);
+    setPray(false);
+    setArt (false);
+    setTravel(false);
+    setFamily(false);
+    setOther(false);
+    setDiscription("");
   }
   
 

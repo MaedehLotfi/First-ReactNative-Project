@@ -72,7 +72,14 @@ const SelfManagement = ({navigation})=>{
 
   const SendToServer=()=>{
     SendCSelfDataToServer();
-    Alert.alert('اطلاعات ارسال شد!', "اطلاعات امروز ارسال شد");
+    Alert.alert('اطلاعات امروز ارسال شد!', "اطلاعات فعالیت های خودمدیریتی ارسال شد");
+    setDrug(false);
+    setReports(false);
+    setReminders(false);
+    setDaily(false);
+    setShopping(false);
+    setOther(false);
+    setDiscription("");
   }
 
     return(

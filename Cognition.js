@@ -64,7 +64,13 @@ const Cognition = ({navigation})=>{
 
   const SendToServer=()=>{
     SendCognitionDataToServer();
-    Alert.alert('اطلاعات ارسال شد!', "اطلاعات امروز ارسال شد");
+    Alert.alert('اطلاعات امروز ارسال شد!', "اطلاعات فعالیت های شناختی ارسال شد");
+    setReading(false);
+    setWatching(false);
+    setQuiz(false);
+    setGame(false);
+    setOther(false);
+    setDiscription("");
   }
 
     const [isSelected, setSelection] = useState(false);

@@ -55,6 +55,14 @@ import CheckBox from '@react-native-community/checkbox';
   const SendToServer=()=>{
     SendPhysiologicalDataToServer();
     Alert.alert('اطلاعات ارسال شد!', "اطلاعات امروز ارسال شد");
+    setMorningDrug(false);
+    setEveningDrug(false);
+    setNightDrug(false);
+    setWeight("");
+    setHeight("");
+    setBPressure("");
+    setHBeat("");
+    setBSugar("");
   }
   var date= new Date().toLocaleString()
    
