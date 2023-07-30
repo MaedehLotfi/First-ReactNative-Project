@@ -5,235 +5,70 @@ import {
 } from 'react-native';
 import CheckBox from '@react-native-community/checkbox';
 import styles from './Sty';
+import PushNotification from 'react-native-push-notification';
 
 
 const Test = ()=>{
-    const [selfManagementData,setSelfManagementData]= useState([]);
-
-  const LoadSelfManagementDataFromServer= async()=>{
-    fetch("http://moshavermoslemi.ir/api/App/GetASelfManagement/"+1)
-    .then((response)=>response.json())
-    .then((json)=>{
-    console.log("\n\n!!!!!!!!! SelfManagement received  : \n"+JSON.stringify(json));
-    setSelfManagementData(json);
-   })
-    .catch((error)=>{
-      console.log("Error:", error);
-    })
-    .finally(()=>{});}
-
-    useEffect(()=>{
-      LoadSelfManagementDataFromServer(); 
-      LoadACognitionDataFromServer(); 
-      LoadASocialDataFromServer();
-      LoadAPhysicalDataFromServer();
-   },[]);
-   const [socialData,setSocialData]= useState([]);
-
-   const LoadASocialDataFromServer= async()=>{
-     fetch("http://moshavermoslemi.ir/api/App/GetASocials/"+1)
-     .then((response)=>response.json())
-     .then((json)=>{
-     console.log("\n\n!!!!!!!!! SocialData received with id in : \n"+JSON.stringify(json));
-     setSocialData(json);
-    })
-     .catch((error)=>{
-       console.log("Error:", error);
-     })
-     .finally(()=>{});}
- 
-     
-
-    const [physicalData,setPhysicalData]= useState([]);
-
-    const LoadAPhysicalDataFromServer= async()=>{
-      fetch("http://moshavermoslemi.ir/api/App/GetAPhysical/"+1)
-      .then((response)=>response.json())
-      .then((json)=>{
-      console.log("\n\n!!!!!!!!! APhysicalData received with id in : \n"+JSON.stringify(json));
-      setPhysicalData(json);
-     })
-      .catch((error)=>{
-        console.log("Error:", error);
-      })
-      .finally(()=>{});}
+  PushNotification.localNotification({
+    /* Android Only Properties */
+    channelId: "Newchannel-daily", // (required) channelId, if the channel doesn't exist, notification will not trigger.
+    ticker: "My Notification Ticker", // (optional)
+    showWhen: true, // (optional) default: true
+    autoCancel: true, // (optional) default: true
+    largeIcon: "ic_launcher", // (optional) default: "ic_launcher". Use "" for no large icon.
+    largeIconUrl: "https://www.example.tld/picture.jpg", // (optional) default: undefined
+    smallIcon: "ic_notification", // (optional) default: "ic_notification" with fallback for "ic_launcher". Use "" for default small icon.
+    bigText: "گزارش روزانه یادتان نرود! لطفا هرشب گزارش روز و فعالیت ها را ثبت کنید", // (optional) default: "message" prop
+    bigPictureUrl: "https://www.example.tld/picture.jpg", // (optional) default: undefined
+    bigLargeIcon: "ic_launcher", // (optional) default: undefined
+    bigLargeIconUrl: "https://www.example.tld/bigicon.jpg", // (optional) default: undefined
+    vibrate: true, // (optional) default: true
+    vibration: 300, // vibration length in milliseconds, ignored if vibrate=false, default: 1000
+    tag: "some_tag", // (optional) add tag to message
+    group: "group", // (optional) add group to message
+    groupSummary: false, // (optional) set this notification to be the group summary for a group of notifications, default: false
+    ongoing: false, // (optional) set whether this is an "ongoing" notification
+    priority: "high", // (optional) set notification priority, default: high
+    visibility: "private", // (optional) set notification visibility, default: private
+    ignoreInForeground: false, // (optional) if true, the notification will not be visible when the app is in the foreground (useful for parity with how iOS notifications appear). should be used in combine with `com.dieam.reactnativepushnotification.notification_foreground` setting
+    shortcutId: "shortcut-id", // (optional) If this notification is duplicative of a Launcher shortcut, sets the id of the shortcut, in case the Launcher wants to hide the shortcut, default undefined
+    onlyAlertOnce: false, // (optional) alert will open only once with sound and notify, default: false
+    
+    when: null, // (optional) Add a timestamp (Unix timestamp value in milliseconds) pertaining to the notification (usually the time the event occurred). For apps targeting Build.VERSION_CODES.N and above, this time is not shown anymore by default and must be opted into by using `showWhen`, default: null.
+    usesChronometer: false, // (optional) Show the `when` field as a stopwatch. Instead of presenting `when` as a timestamp, the notification will show an automatically updating display of the minutes and seconds since when. Useful when showing an elapsed time (like an ongoing phone call), default: false.
+    timeoutAfter: null, // (optional) Specifies a duration in milliseconds after which this notification should be canceled, if it is not already canceled, default: null
   
-     
+    messageId: "google:message_id", // (optional) added as `message_id` to intent extras so opening push notification can find data stored by @react-native-firebase/messaging module. 
+  
+    invokeApp: true, // (optional) This enable click on actions to bring back the application to foreground or stay in background, default: true
+  
+    /* iOS only properties */
+    category: "", // (optional) default: empty string
+    subtitle: "My Notification Subtitle", // (optional) smaller title below notification title
+  
+    /* iOS and Android properties */
+    id: "0", // (optional) Valid unique 32 bit integer specified as string. default: Autogenerated Unique ID
+    title: "یادآور", // (optional)
+    message: "گزارش روزانه و ثبت اطلاعات فراموش نشود!", // (required)
+    picture: "https://www.example.tld/picture.jpg", // (optional) Display an picture with the notification, alias of `bigPictureUrl` for Android. default: undefined
+    userInfo: {}, // (optional) default: {} (using null throws a JSON value '<null>' error)
+    playSound: false, // (optional) default: true
+    soundName: "default", // (optional) Sound to play when the notification is shown. Value of 'default' plays the default sound. It can be set to a custom sound such as 'android.resource://com.xyz/raw/my_sound'. It will look for the 'my_sound' audio file in 'res/raw' directory and play it. default: 'default' (default sound is played)
+    number: 10, // (optional) Valid 32 bit integer specified as string. default: none (Cannot be zero)
+    repeatType: "day", // (optional) Repeating interval. Check 'Repeating Notifications' section for more info.
+  });
+  PushNotification.removeAllDeliveredNotifications();
 
-     const [cognitionData,setCognitionData]= useState([]);
+  PushNotification.cancelLocalNotification('0');
 
-     const LoadACognitionDataFromServer= async()=>{
-       fetch("http://moshavermoslemi.ir/api/App/GetACognitions/"+1)
-       .then((response)=>response.json())
-       .then((json)=>{
-       console.log("\n\n!!!!!!!!! ACognitionData received with id in : \n"+JSON.stringify(json));
-       setCognitionData(json);
-      })
-       .catch((error)=>{
-         console.log("Error:", error);
-       })
-       .finally(()=>{});}
-   
-       
+
+  
+
     return(
-<View>
-<View style={{flexDirection:'row'}}>
-<View style={{width:50,height:50, margin:10, backgroundColor:'gray'}}><Text style={{textAlign:'center',}}>X</Text></View>
-<View style={{width:50,height:50, margin:10, backgroundColor:'yellow'}}><Text style={{textAlign:'center',}}>1</Text></View>
-<View style={{width:50,height:50, margin:10, borderColor:'orange', borderWidth:1 }}><Text style={{textAlign:'center',}}>2</Text></View>
-<View style={{width:50,height:50, margin:10,  borderColor:'red', borderWidth:1}}><Text style={{textAlign:'center',}}>3</Text></View>
-<View style={{width:50,height:50, margin:10,  borderColor:'green', borderWidth:1}}><Text style={{textAlign:'center',}}>4</Text></View>
-</View>
+      <SafeAreaView>
+        <Text>Hi</Text>
+      </SafeAreaView>
 
-    {/* <Text>selfManagementData</Text>
-{selfManagementData.map((item)=>{
-    let Level1 = item.Level1 ;
-    let Level2 = item.Level2 ;
-    let Level3 = item.Level3 ;
-    let Level4 = item.Level4 ;
-    console.log('Level1,Level2,Level3,Level4 == '+Level1,Level2,Level3,Level4)
-if (Level1===true){return(<View style={{flexDirection:'row'}}>
-<View style={{width:50,height:50, margin:10, backgroundColor:'yellow'}}></View>
-<View style={{width:50,height:50, margin:10, borderColor:'orange', borderWidth:1 }}></View>
-<View style={{width:50,height:50, margin:10,  borderColor:'red', borderWidth:1}}></View>
-<View style={{width:50,height:50, margin:10,  borderColor:'green', borderWidth:1}}></View>
-</View>)}
-
-if (Level2===true){return(<View style={{flexDirection:'row'}}>
-<View style={{width:50,height:50, margin:10, borderColor:'yellow', borderWidth:1}}></View>
-<View style={{width:50,height:50, margin:10,  backgroundColor:'orange'}}></View>
-<View style={{width:50,height:50, margin:10,  borderColor:'red', borderWidth:1}}></View>
-<View style={{width:50,height:50, margin:10,  borderColor:'green', borderWidth:1}}></View>
-</View>)}
-
-if (Level3===true){return(<View style={{flexDirection:'row'}}>
-<View style={{width:50,height:50, margin:10, borderColor:'yellow', borderWidth:1}}></View>
-<View style={{width:50,height:50, margin:10,  borderColor:'orange', borderWidth:1}}></View>
-<View style={{width:50,height:50, margin:10, backgroundColor:'red'}}></View>
-<View style={{width:50,height:50, margin:10,  borderColor:'green', borderWidth:1}}></View>
-</View>)}
-
-if (Level4===true){return(<View style={{flexDirection:'row'}}>
-<View style={{width:50,height:50, margin:10, borderColor:'yellow', borderWidth:1}}></View>
-<View style={{width:50,height:50, margin:10,  borderColor:'orange', borderWidth:1}}></View>
-<View style={{width:50,height:50, margin:10, borderColor:'red', borderWidth:1}}></View>
-<View style={{width:50,height:50, margin:10,  backgroundColor:'green', borderWidth:1}}></View>
-</View>)}
-
-})}
-
-<Text>SocialData</Text>
-{socialData.map((item)=>{
-    let Level1 = item.Level1 ;
-    let Level2 = item.Level2 ;
-    let Level3 = item.Level3 ;
-    let Level4 = item.Level4 ;
-    console.log('Level1,Level2,Level3,Level4 == '+Level1,Level2,Level3,Level4)
-if (Level1===true){return(<View style={{flexDirection:'row'}}>
-<View style={{width:50,height:50, margin:10, backgroundColor:'yellow'}}></View>
-<View style={{width:50,height:50, margin:10, borderColor:'orange', borderWidth:1 }}></View>
-<View style={{width:50,height:50, margin:10,  borderColor:'red', borderWidth:1}}></View>
-<View style={{width:50,height:50, margin:10,  borderColor:'green', borderWidth:1}}></View>
-</View>)}
-
-if (Level2===true){return(<View style={{flexDirection:'row'}}>
-<View style={{width:50,height:50, margin:10, borderColor:'yellow', borderWidth:1}}></View>
-<View style={{width:50,height:50, margin:10,  backgroundColor:'orange'}}></View>
-<View style={{width:50,height:50, margin:10,  borderColor:'red', borderWidth:1}}></View>
-<View style={{width:50,height:50, margin:10,  borderColor:'green', borderWidth:1}}></View>
-</View>)}
-
-if (Level3===true){return(<View style={{flexDirection:'row'}}>
-<View style={{width:50,height:50, margin:10, borderColor:'yellow', borderWidth:1}}></View>
-<View style={{width:50,height:50, margin:10,  borderColor:'orange', borderWidth:1}}></View>
-<View style={{width:50,height:50, margin:10, backgroundColor:'red'}}></View>
-<View style={{width:50,height:50, margin:10,  borderColor:'green', borderWidth:1}}></View>
-</View>)}
-
-if (Level4===true){return(<View style={{flexDirection:'row'}}>
-<View style={{width:50,height:50, margin:10, borderColor:'yellow', borderWidth:1}}></View>
-<View style={{width:50,height:50, margin:10,  borderColor:'orange', borderWidth:1}}></View>
-<View style={{width:50,height:50, margin:10, borderColor:'red', borderWidth:1}}></View>
-<View style={{width:50,height:50, margin:10,  backgroundColor:'green',}}></View>
-</View>)}
-
-})}
-
-<Text>physicalData</Text>
-{physicalData.map((item)=>{
-    let Level1 = item.Level1 ;
-    let Level2 = item.Level2 ;
-    let Level3 = item.Level3 ;
-    let Level4 = item.Level4 ;
-    console.log('Level1,Level2,Level3,Level4 == '+Level1,Level2,Level3,Level4)
-if (Level1===true){return(<View style={{flexDirection:'row'}}>
-<View style={{width:50,height:50, margin:10, backgroundColor:'yellow'}}></View>
-<View style={{width:50,height:50, margin:10, borderColor:'orange', borderWidth:1 }}></View>
-<View style={{width:50,height:50, margin:10,  borderColor:'red', borderWidth:1}}></View>
-<View style={{width:50,height:50, margin:10,  borderColor:'green', borderWidth:1}}></View>
-</View>)}
-
-if (Level2===true){return(<View style={{flexDirection:'row'}}>
-<View style={{width:50,height:50, margin:10, borderColor:'yellow', borderWidth:1}}></View>
-<View style={{width:50,height:50, margin:10,  backgroundColor:'orange'}}></View>
-<View style={{width:50,height:50, margin:10,  borderColor:'red', borderWidth:1}}></View>
-<View style={{width:50,height:50, margin:10,  borderColor:'green', borderWidth:1}}></View>
-</View>)}
-
-if (Level3===true){return(<View style={{flexDirection:'row'}}>
-<View style={{width:50,height:50, margin:10, borderColor:'yellow', borderWidth:1}}></View>
-<View style={{width:50,height:50, margin:10,  borderColor:'orange', borderWidth:1}}></View>
-<View style={{width:50,height:50, margin:10, backgroundColor:'red'}}></View>
-<View style={{width:50,height:50, margin:10,  borderColor:'green', borderWidth:1}}></View>
-</View>)}
-
-if (Level4===true){return(<View style={{flexDirection:'row'}}>
-<View style={{width:50,height:50, margin:10, borderColor:'yellow', borderWidth:1}}></View>
-<View style={{width:50,height:50, margin:10,  borderColor:'orange', borderWidth:1}}></View>
-<View style={{width:50,height:50, margin:10, borderColor:'red', borderWidth:1}}></View>
-<View style={{width:50,height:50, margin:10,  backgroundColor:'green',}}></View>
-</View>)}
-
-})}
-
-<Text>cognitionData</Text>
-{cognitionData.map((item)=>{
-    let Level1 = item.Level1 ;
-    let Level2 = item.Level2 ;
-    let Level3 = item.Level3 ;
-    let Level4 = item.Level4 ;
-    console.log('Level1,Level2,Level3,Level4 == '+Level1,Level2,Level3,Level4)
-if (Level1===true){return(<View style={{flexDirection:'row'}}>
-    <Text>cognitionData</Text>
-<View style={{width:50,height:50, margin:10, backgroundColor:'yellow'}}></View>
-<View style={{width:50,height:50, margin:10, borderColor:'orange', borderWidth:1 }}></View>
-<View style={{width:50,height:50, margin:10,  borderColor:'red', borderWidth:1}}></View>
-<View style={{width:50,height:50, margin:10,  borderColor:'green', borderWidth:1}}></View>
-</View>)}
-
-if (Level2===true){return(<View style={{flexDirection:'row'}}>
-<View style={{width:50,height:50, margin:10, borderColor:'yellow', borderWidth:1}}></View>
-<View style={{width:50,height:50, margin:10,  backgroundColor:'orange'}}></View>
-<View style={{width:50,height:50, margin:10,  borderColor:'red', borderWidth:1}}></View>
-<View style={{width:50,height:50, margin:10,  borderColor:'green', borderWidth:1}}></View>
-</View>)}
-
-if (Level3===true){return(<View style={{flexDirection:'row'}}>
-<View style={{width:50,height:50, margin:10, borderColor:'yellow', borderWidth:1}}></View>
-<View style={{width:50,height:50, margin:10,  borderColor:'orange', borderWidth:1}}></View>
-<View style={{width:50,height:50, margin:10, backgroundColor:'red'}}></View>
-<View style={{width:50,height:50, margin:10,  borderColor:'green', borderWidth:1}}></View>
-</View>)}
-
-if (Level4===true){return(<View style={{flexDirection:'row'}}>
-<View style={{width:50,height:50, margin:10, borderColor:'yellow', borderWidth:1}}></View>
-<View style={{width:50,height:50, margin:10,  borderColor:'orange', borderWidth:1}}></View>
-<View style={{width:50,height:50, margin:10, borderColor:'red', borderWidth:1}}></View>
-<View style={{width:50,height:50, margin:10,  backgroundColor:'green',}}></View>
-</View>)}
-
-})} */}
-</View>
     );
 }
 export default Test;
